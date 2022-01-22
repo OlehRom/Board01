@@ -1,0 +1,21 @@
+{% extends 'advertisement/base.html' %}
+
+{% block name %}
+    <div>
+        <h1 style="margin-left: 50px">Популярні оголошення</h1>
+    </div>
+{% endblock %}
+{% block content %}
+    {% for task in tasks %}
+        <div class="alert alert-warning mt-2">
+            <div class="post">
+                <div class="date">
+                    <p>Опубіковано: {{ task.published_date }}</p>
+                </div>
+                <h1><a href="{% url 'detail' pk=task.pk %}">{{ task.title }}</a></h1>
+                <p>{{ task.text|linebreaksbr }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
